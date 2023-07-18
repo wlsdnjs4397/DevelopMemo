@@ -1,0 +1,23 @@
+
+Cache
+Cache란 나중에 요청할 결과를 미리 저장해둔 후 빠르게 서비스 해주는 것을 의미.
+cache가 동작 할 수 있는 철학은 파레토 법칙이 있다.
+
+파레토 법칙이란
+80퍼센트의 결과는 20퍼센트의 원인으로 인해 발생한다.
+=> 모든 결과를 캐싱할 필요는 없으며, 서비스를 할 때 많이 사용되는 20%를 캐싱한다면 전체적으로 영향을 주어 효율을 극대화 할 수 있다
+
+cache 사용구조
+
+look aside cache
+1.cache에 data존재 유무 확인
+2.data가 있다면 cache data사용
+3.없다면 db또는 api 호출 로직 
+4.가져온 data cache에 저장
+
+write back
+1.data를 cache에 저장
+2.cache에 data를 일정 기간 check
+3.일정기간 모여있는 data를 db에 저장
+4.cache에 있는 data 삭제
+=> 일정한 주기 또는 크기가 되면 한번에 처리
