@@ -15,4 +15,9 @@ Redis 자료구조
           lpop key - List의 index 0의 데이터를 빼온다
           rpop key - List의 index last의 데이터를 빼온다
 - Set    : 중복되지 않는 값을 데이터로 가지는 Collection
+          sadd key member - set에 value를 하나 추가
+          srem key - set에서 key를 삭제
+          smembers key - set에 속해있는 모든 member를 조회
+          scard key - set에 속해있는 member 갯수
+          spop - set에서 무작위로 member 가져오기
       
