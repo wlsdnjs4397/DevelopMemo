@@ -1,0 +1,18 @@
+Redis 특징 
+- Redis는 List, Set, Sorted Set, Hash 같은 Collection을 지원한다.
+- 경쟁상태(Race Condition)에 빠질수 있는 것을 방지한다.
+  -> Redis는 Single Thread -> Atomic 보장
+  ※경쟁상태 : 두 개 이상의 프로세스가 공통 자원을 병행적으로(concurrently) 읽거나 쓰는 동작을 할 때, 공용 데이터에 대한 접근이 어떤 순서에 따라 이루어졌는지에 따라 그 실행 결과가 같지 않고 달라지는 상황
+- 영속성(persistence)을 지원하여 서버가 꺼지더라도 다시 데이터를 불러올 수 있다.
+
+Redis 자료구조
+- String : 일반적으로 사용되는 Key - Value의 형식을 가지는 자료구조. key와 value의 관계는 1 : 1
+           기본 명령어 - get [key], set [key] [value], del [key]
+- list   : string 묶음, quick 구조
+          lpush key value - List의 index 0 쪽으로 데이터 삽입
+          rpush key value - List의 index last 쪽으로 데이터를 삽입
+          lrange key start end - List의 start부터 end까지의 element를 반환
+          lpop key - List의 index 0의 데이터를 빼온다
+          rpop key - List의 index last의 데이터를 빼온다
+- Set    : 중복되지 않는 값을 데이터로 가지는 Collection
+      
