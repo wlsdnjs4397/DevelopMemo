@@ -6,7 +6,7 @@ Redis 특징
 - 영속성(persistence)을 지원하여 서버가 꺼지더라도 다시 데이터를 불러올 수 있다.
 
 Redis 자료구조
-- String : 일반적으로 사용되는 Key - Value의 형식을 가지는 자료구조. key와 value의 관계는 1 : 1
+- Strings : 일반적으로 사용되는 Key - Value의 형식을 가지는 자료구조. key와 value의 관계는 1 : 1
            기본 명령어 - get [key], set [key] [value], del [key]
 - list   : string 묶음, quick 구조
           lpush key value - List의 index 0 쪽으로 데이터 삽입
@@ -20,4 +20,19 @@ Redis 자료구조
           smembers key - set에 속해있는 모든 member를 조회
           scard key - set에 속해있는 member 갯수
           spop - set에서 무작위로 member 가져오기
-      
+- Sorted Set : 중복되지 않는 값을 데이터로 가지는 Collection입니다. 또한 가중치(Score)를 가지고 있고 가중치(Score)에 따른 정렬된 순서를 가지고 있다.
+                zadd key score member - 집합에 Score와 Value를 추가
+                zcard key - 집합 속에 있는 member의 갯수를 조회
+                zrange key start stop - index를 범위로하여 조회
+                zrangebyscore key min max - socore를 범위로하여 조회
+- Hash       : 내부에 또 다른 Key - value로 이루어진 자료구조
+                hset key field value : key에 field와 value를 쌍으로 저장
+                hget key field : key에서 field로 value를 가져온다
+                hdel key field : key에서 field를 삭제
+                hlen key : field의 갯수를 반환
+                hgetAll key : field와 value를 모두 반환
+                hkeys key : 모든 field를 반환
+                hvals key : 모든 value를 반환
+- expire    : expire는 지정한 시간 이후 key를 자동 삭제하는 명령어
+              expire key member second : key에 ttl을 설정
+              ttl key : 남은 ttl을 초단위로 확인
