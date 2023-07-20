@@ -1,0 +1,138 @@
+Java의 Redis Client
+- Jedis , Lettuce
+- 기존에는 Jedis를 많이 사용 했지만 여러 단점과 Lettuce의 장점으로 인해 Spring Boot 2.0 부터 Jedis가 기본 클라이언트에서 deprecated 되고 Lettuce가 탑재 되었다.
+- Jedis는 멀티스레드를 사용할 때 동시 스레드는 상호 작용 기간 동안 자체 인스턴스를 얻어 불안정하다. 
+- Lettuce는 Netty 기반이라 비동기 지원 가능
+
+------------------------------------------------------------------------------------
+SpringBoot에서 Redis를 사용하는 방법은 RedistRepository와 RedisTemplate 두가지가 있다.
+
+공통세팅
+1. build.gradle에 spring-boot-starter-data-redis 추가하고 빌드
+=> implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
+2. aplication.yaml에 host와 port 설정 (기본설정 localhost:6379)
+
+3. Redis 사용을 위한 기본 Configuration 설정
+=> 2번에서 설정한 값을 @Value 어노테이션으로 주입한다.
+@Configuration
+public class RedisConfig {
+
+    @Value("${spring.redis.host}")
+    private String host;
+
+    @Value("${spring.redis.port}")
+    private int port;
+
+    @Bean
+    public RedisConnectionFactory redisConnectionFactory() {
+        return new LettuceConnectionFactory(host, port);
+    }
+}
+
+RedisRepository
+- Spring Data Redis의 Redist Repository를 이용하면 간단하게 Domain Entity를 Redis Hash로 만들 수 있다.
+- 다만 트렌잭션을 지원하지 않아 트랜잭션을 적용해야 한다면 RedisTemplet을 사용해야 한다.
+
+=> Entity
+@RedisHash(value = "people", timeToLive = 30)
+public class Person {
+    @Id
+    private String id;
+    private String name;
+    private Integer age;
+
+    public Person(String name, Integer age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+
+=> Repository 
+public interface PersonRedisRepository extends CrudRepository<Person, String> {}
+
+=> Example
+@SpringBootTest
+public class RedisRepositoryTest {
+    @Autowired
+    private PersonRedisRepository repo;
+    @Test
+    void test() {
+        Person person = new Person("Park", 20);
+        // 저장
+        repo.save(person);
+        // `keyspace:id` 값을 가져옴
+        repo.findById(person.getId());
+        // Person Entity 의 @RedisHash 에 정의되어 있는 keyspace (people) 에 속한 키의 갯수를 구함
+        repo.count();
+        // 삭제
+        repo.delete(person);
+    }
+}
+
+* JPA와 동일하게 사용
+* id값을 따로 지정하지 않으면 랜덤한 키값이 들어간다.
+
+RedisTemplate
+- Entity 뿐만 아니라 여러가지 원하는 타입을 넣을 수 있다.
+- template 선언 후 원하는 타입에 맞는 Operations를 꺼내서 사용.
+
+=> (공통세팅 3번) Configuration 설정 추가
+- LettuceConnectionFactory 을 적용해주기 위해 설정
+@Bean
+public RedisTemplate<?, ?> redisTemplate() {
+    RedisTemplate<?, ?> redisTemplate = new RedisTemplate<>();
+    redisTemplate.setConnectionFactory(redisConnectionFactory());
+    return redisTemplate;
+}
+
+=> Example
+@SpringBootTest
+public class RedisTemplateTest {
+    @Autowired
+    private RedisTemplate<String, String> redisTemplate;
+  
+    @Test
+    void testStrings() {
+        // given
+        ValueOperations<String, String> valueOperations = redisTemplate.opsForValue();
+        String key = "stringKey";
+        // when
+        valueOperations.set(key, "hello");
+        // then
+        String value = valueOperations.get(key);
+        assertThat(value).isEqualTo("hello");
+    }
+    @Test
+    void testSet() {
+        // given
+        SetOperations<String, String> setOperations = redisTemplate.opsForSet();
+        String key = "setKey";
+        // when
+        setOperations.add(key, "h", "e", "l", "l", "o");
+        // then
+        Set<String> members = setOperations.members(key);
+        Long size = setOperations.size(key);
+
+        assertThat(members).containsOnly("h", "e", "l", "o");
+        assertThat(size).isEqualTo(4);
+    }
+    @Test
+    void testHash() {
+        // given
+        HashOperations<String, Object, Object> hashOperations = redisTemplate.opsForHash();
+        String key = "hashKey";
+        // when
+        hashOperations.put(key, "hello", "world");
+        // then
+        Object value = hashOperations.get(key, "hello");
+        assertThat(value).isEqualTo("world");
+      
+        Map<Object, Object> entries = hashOperations.entries(key);
+        assertThat(entries.keySet()).containsExactly("hello");
+        assertThat(entries.values()).containsExactly("world");
+
+        Long size = hashOperations.size(key);
+        assertThat(size).isEqualTo(entries.size());
+    }
+}
