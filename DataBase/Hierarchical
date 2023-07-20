@@ -1,0 +1,29 @@
+계층형 쿼리
+
+Oracle
+- START WITH : 트리구조 최상위 행 지정
+- CONNECT BY : 부모 자식 관계 지정
+- PRIOR : PRIOR에 지정된 컬럼이 맞은편 컬럼을 찾아간다.
+- CONNECT BY PRIOR 자식 = 부모 : 부모 -> 자식 순방향 전개
+= CONNECT BY PRIOR 부모 = 자식 : 자식 -> 부모 역방향 전개
+=> SELECT MENU_ID, PARENT_ID, LEVEL
+    FROM TEST A
+    START WITH PARENT_ID='00'
+    CONNECTION BY PRIOR MENU_ID = PARENT_ID;
+      
+
+MYSQL 
+- WITH RECURSIVE : WITH(가상 테이블(임시) 생성 , RECURSIVE(재귀구현) => 가상 테이블이 자신을 참조하여 값을 결정
+- RECURSIVE를 사용할 때는 서브 쿼리내에서 UNION (ALL)이 사용되어야 한다.
+
+=> WITH RECURSIVE t as (
+    SELECT MENU_ID, PARENT_ID
+    FROM TEST
+    WHERE PARENT_ID = '00
+      UNION ALL
+    SELECT T1.MENU_ID, T1.PARENT_ID
+    FROM TEST T1
+    WHERE T1.PERENT_ID = t.MENU_ID
+  )
+SELECT MENU_ID
+FROM t;
