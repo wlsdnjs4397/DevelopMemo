@@ -1,0 +1,6 @@
+* param : HTTP 요청 파라미터 접근 
+        EX ) ${param.paramdata}
+* session : HTTP 세션 접근
+        EX ) ${session.sessiondata}
+* @ : 스프링 빈 접근
+        EX ) ${@hellobean.hell("Spring!")}
