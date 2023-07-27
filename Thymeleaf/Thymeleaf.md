@@ -32,7 +32,7 @@
 
    ### - 기본기능
    1. th:text="${}" : jsp의 el 표현식인 ${}와 마찬가지로 ${} 표현식을 통해서 컨트롤러에서 전달받은 데이터 접근 가능.
-                   ex) <div th:text="${item}"></div>
+                   ex) /* <div th:text="${item}"></div> */
                    ※ th:utext 속성도 있는데. html태크를 escape 처리하지 않기 때문에 보안에 취약해서 주의해서 사용.
    2. th:href="@{}" : <a> 태그의 href속성과 동일하다.
                    ex) <a th:href="@{/testPage?currPage={page}}">
