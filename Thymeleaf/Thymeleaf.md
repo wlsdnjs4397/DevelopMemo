@@ -58,9 +58,9 @@
       <div th:with="userid=${number}"> <p th:text="${userid}"></p> <div>   
                   ```   
    7. th:value="${}" : input의 value에 값을 넣을 때 사용한다.
-                       여러개의 값을 넣을 땐 + 기호를 사용한다.
+                       여러개의 값을 넣을 땐 + 기호를 사용한다.   
       ```   
-      ex) <input type="text" th:value="${userid}">
+      ex) <input type="text" th:value="${userid}">   
       ```   
    9. th:block : block은 타임리프 표현을 어느 곳에서든 사용할 수 있도록 하는 구문이다. 동적인 처리가 필요할 때 사용. layout기능이나 switch에 많이 사용.
                    ex) <th:block th:with="userid=${number}"></th:block>
