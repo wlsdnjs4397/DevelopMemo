@@ -37,8 +37,7 @@
                        ex) <div th:text="${item}"></div>      
                      ```      
                    ※ th:utext 속성도 있는데. html태크를 escape 처리하지 않기 때문에 보안에 취약해서 주의해서 사용.
-   3. th:href="@{}" : a 태그의 href속성과 동일하다.
-                  ```     
+   3. th:href="@{}" : a 태그의 href속성과 동일하다.   
                     ex) <a th:href="@{/testPage?currPage={page}}">   
                     model에 {"param1", "data1"} {"param2", "data2"} 넣은 경우
       
@@ -52,8 +51,7 @@
                     
                     - 경로 변수 + 쿼리 파라미터   
                     : @{/hello/{param1}(param1=${param1}, param2=${param2})}   
-                    -> /hello/data1?param2=data2   
-                  ```     
+                    -> /hello/data1?param2=data2    
    5. th:with="${}" : 새로운 변수값을 생성할 수 있다. JSTL에서 c:set과 유사하지만 선언한 요소의 하위태그에서만 사용할 수 있다.
                    ex) <div th:with="userid=${number}"> <p th:text="${userid}"></p> <div>
    6. th:value="${}" : input의 value에 값을 넣을 때 사용한다.
