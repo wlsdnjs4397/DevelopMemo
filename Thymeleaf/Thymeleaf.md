@@ -40,7 +40,8 @@
    3. th:href="@{}" : a 태그의 href속성과 동일하다.
                   ```     
                     ex) <a th:href="@{/testPage?currPage={page}}">   
-                    model에 {"param1", "data1"} {"param2", "data2"} 넣은 경우   
+                    model에 {"param1", "data1"} {"param2", "data2"} 넣은 경우
+      
                     -쿼리 파라미터    
                     : @{/hello(param1=${param1}, param2={param2})}   
                     -> /hello?param1=data1&param2=data2   
