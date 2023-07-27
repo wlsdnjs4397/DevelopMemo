@@ -22,13 +22,13 @@
   - 링크URL : @{...} - @{https://www.naver.com}
   - 부분적 표현 : ~{...} -
   - 조건 연산자 : and, or, not, !
-      ${student.age} > 20 and ${student.age} < 10 처럼 각각 분리하여서 사용하거나
-      ${student.age > 20 or student.age < 10} 처럼 한 번에 묶어서 사용하는 것도 가능
+      > ${student.age} > 20 and ${student.age} < 10 처럼 각각 분리하여서 사용하거나
+      > ${student.age > 20 or student.age < 10} 처럼 한 번에 묶어서 사용하는 것도 가능
   -  텍스트 결합 : ${student.id}+${student.name}
   -  문장 결합 : |학생 아이디 : ${student.id}, 학생 이름 : ${student.name} | - | 로 전체 문장을 묶어줌
-      if-then : if ? then - ${student.age < 20} ? '청소년'
-      if-then-else : if ? then : else - ${student.age < 20} ? '청소년' : '성인'
-      default : value ?: defaultValue
+      > if-then : if ? then - ${student.age < 20} ? '청소년'
+      > if-then-else : if ? then : else - ${student.age < 20} ? '청소년' : '성인'
+      > default : value ?: defaultValue
 
    ### - 기본기능
    1. th:text="${}" : jsp의 el 표현식인 ${}와 마찬가지로 ${} 표현식을 통해서 컨트롤러에서 전달받은 데이터 접근 가능.
