@@ -71,20 +71,22 @@
                    ex) <p th:if="${student.grade > 80}">합격</p>   
                        <p th:unless="${student.grade > 80}">불합격</p>
   ```
-   13. th:each, 상태변수 : th:each를 사용할때 기본적으로 status 변수를 제공해주고 이를 이용하여 index나 count등의 값을 사용할 수 있다.
-                         기본적으로 변수명Stat로 사용할 수 있다. 
-                         index : 현재 인덱스(0부터 시작)
-                         count : 현재 인덱스(1부터 시작)
-                         size : 전체 개수
-                         current : 현재 요소
-                         even : 현재 반복이 짝수인지(boolean)
-                         odd : 현재 반복이 홀수인지(boolean)
-                         first : 현재 반복이 첫번째인지(boolean)
+   13. th:each, 상태변수 : th:each를 사용할때 기본적으로 status 변수를 제공해주고 이를 이용하여 index나 count등의 값을 사용할 수 있다.   
+                         기본적으로 변수명Stat로 사용할 수 있다.    
+                         index : 현재 인덱스(0부터 시작)   
+                         count : 현재 인덱스(1부터 시작)   
+                         size : 전체 개수   
+                         current : 현재 요소   
+                         even : 현재 반복이 짝수인지(boolean)   
+                         odd : 현재 반복이 홀수인지(boolean)   
+                         first : 현재 반복이 첫번째인지(boolean)   
                          last : 현재 반복이 마지막인지(boolean)
-                   ex) <tr th:each="student : ${studentList}">
-                           <td th:text="|${student.id} : ${student.name}"></td>
-                           <td th:text=${'index : ' + studentStat.index}></td>
+       ```   
+                   ex) <tr th:each="student : ${studentList}">   
+                           <td th:text="|${student.id} : ${student.name}"></td>   
+                           <td th:text=${'index : ' + studentStat.index}></td>   
                        </tr>
+       ```   
     9.  <!-- /* 이렇게 하면 타임리프 파싱될 때 일반 html 주석이 아니라 타임리프 주석으로 처리되어 클라이언트에서 볼 수 없습니다. 소스보기에서 숨겨야 하는 주석일 경우 타임리프 주석으로 처리하면 됩니다. :) */ --
                        - 쿼리 파라미터
 
