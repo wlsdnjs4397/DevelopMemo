@@ -1,8 +1,8 @@
 입사 후 늘 프론트를 JSP로만 개발을 진행하다가 처음으로 Thymleaf로 개발을 해볼 수 있는 기회가 생겨서 Thymleaf에 대해서 공부를 해보려고 한다.
-=
+
 
   Thymleaf란
-  -
+  =
   # - '서버 템플릿 엔진'. html 태그에 속성을 추가해 페이지에 동적으로 값을 추가하거나 처리할 수 있다. 스프링에 권장하나 문법이 어려움.
   EX)
   <input type="text" value="test" th:value="${item}"/>
