@@ -63,11 +63,13 @@
           ex) <input type="text" th:value="${userid}">   
       ```   
    9. th:block : block은 타임리프 표현을 어느 곳에서든 사용할 수 있도록 하는 구문이다. 동적인 처리가 필요할 때 사용. layout기능이나 switch에 많이 사용.
+   ```   
                    ex) <th:block th:with="userid=${number}"></th:block>
-   10. th:if, th:unless : 조건문 if, else
+  ```   
+   11. th:if, th:unless : 조건문 if, else
                    ex) <p th:if="${student.grade > 80}">합격</p>
                        <p th:unless="${student.grade > 80}">불합격</p>
-   11. th:each, 상태변수 : th:each를 사용할때 기본적으로 status 변수를 제공해주고 이를 이용하여 index나 count등의 값을 사용할 수 있다.
+   12. th:each, 상태변수 : th:each를 사용할때 기본적으로 status 변수를 제공해주고 이를 이용하여 index나 count등의 값을 사용할 수 있다.
                          기본적으로 변수명Stat로 사용할 수 있다. 
                          index : 현재 인덱스(0부터 시작)
                          count : 현재 인덱스(1부터 시작)
