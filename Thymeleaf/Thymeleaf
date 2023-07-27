@@ -5,7 +5,7 @@
   EX)
   <input type="text" value="test" th:value="${item}"/>
   ht:value를 통해 item 변수에 값이 존재하면 해당 값 세팅.
-  item이 존재하지 ㅇ낳으면 value="test" 값이 세팅된다.
+  item이 존재하지 않으면 value="test" 값이 세팅된다.
   th:xxx 가 붙은 부분은 서버 사이드 렌더링 
 
 ※ 서버 템플릿 엔진 : 서버에서 DB 또는 API 등을 통해 가져온 데이터를 미리 정의된 템플릿에 넣어 HTML을 그려내 클라이언트에 전달해준다.
