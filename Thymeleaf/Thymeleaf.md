@@ -37,7 +37,7 @@
                        ex) <div th:text="${item}"></div>      
                      ```      
                    ※ th:utext 속성도 있는데. html태크를 escape 처리하지 않기 때문에 보안에 취약해서 주의해서 사용.
-   3. th:href="@{}" : a 태그의 href속성과 동일하다.   
+   2. th:href="@{}" : a 태그의 href속성과 동일하다.   
                     ex) <a th:href="@{/testPage?currPage={page}}">   
                     model에 {"param1", "data1"} {"param2", "data2"} 넣은 경우
       
@@ -52,26 +52,26 @@
                     - 경로 변수 + 쿼리 파라미터   
                     : @{/hello/{param1}(param1=${param1}, param2=${param2})}   
                     -> /hello/data1?param2=data2    
-   5. th:with="${}" : 새로운 변수값을 생성할 수 있다. JSTL에서 c:set과 유사하지만 선언한 요소의 하위태그에서만 사용할 수 있다.     
+   3. th:with="${}" : 새로운 변수값을 생성할 수 있다. JSTL에서 c:set과 유사하지만 선언한 요소의 하위태그에서만 사용할 수 있다.     
                   ```      
                     ex)      
                     <div th:with="userid=${number}"> <p th:text="${userid}"></p> <div>   
                   ```   
-   7. th:value="${}" : input의 value에 값을 넣을 때 사용한다.
+   4. th:value="${}" : input의 value에 값을 넣을 때 사용한다.
                        여러개의 값을 넣을 땐 + 기호를 사용한다.   
       ```   
           ex) <input type="text" th:value="${userid}">   
       ```   
-   9. th:block : block은 타임리프 표현을 어느 곳에서든 사용할 수 있도록 하는 구문이다. 동적인 처리가 필요할 때 사용. layout기능이나 switch에 많이 사용.
+   5. th:block : block은 타임리프 표현을 어느 곳에서든 사용할 수 있도록 하는 구문이다. 동적인 처리가 필요할 때 사용. layout기능이나 switch에 많이 사용.
    ```   
                    ex) <th:block th:with="userid=${number}"></th:block>
   ```   
-   11. th:if, th:unless : 조건문 if, else   
+   6. th:if, th:unless : 조건문 if, else   
   ```   
                    ex) <p th:if="${student.grade > 80}">합격</p>   
                        <p th:unless="${student.grade > 80}">불합격</p>
   ```
-   13. th:each, 상태변수 : th:each를 사용할때 기본적으로 status 변수를 제공해주고 이를 이용하여 index나 count등의 값을 사용할 수 있다.   
+   7. th:each, 상태변수 : th:each를 사용할때 기본적으로 status 변수를 제공해주고 이를 이용하여 index나 count등의 값을 사용할 수 있다.   
                          기본적으로 변수명Stat로 사용할 수 있다.    
                          index : 현재 인덱스(0부터 시작)   
                          count : 현재 인덱스(1부터 시작)   
@@ -87,7 +87,7 @@
                            <td th:text=${'index : ' + studentStat.index}></td>   
                        </tr>
        ```   
-    9.  <!-- /* 이렇게 하면 타임리프 파싱될 때 일반 html 주석이 아니라 타임리프 주석으로 처리되어 클라이언트에서 볼 수 없습니다. 소스보기에서 숨겨야 하는 주석일 경우 타임리프 주석으로 처리하면 됩니다. :) */ --
+    8.  <!-- /* 이렇게 하면 타임리프 파싱될 때 일반 html 주석이 아니라 타임리프 주석으로 처리되어 클라이언트에서 볼 수 없습니다. 소스보기에서 숨겨야 하는 주석일 경우 타임리프 주석으로 처리하면 됩니다. :) */ --
                        - 쿼리 파라미터
 
 
