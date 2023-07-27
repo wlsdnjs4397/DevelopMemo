@@ -1,21 +1,20 @@
 입사 후 늘 프론트를 JSP로만 개발을 진행하다가 처음으로 Thymleaf로 개발을 해볼 수 있는 기회가 생겨서 Thymleaf에 대해서 공부를 해보려고 한다.
 
 
-  Thymleaf란
-  =
-  # - '서버 템플릿 엔진'. html 태그에 속성을 추가해 페이지에 동적으로 값을 추가하거나 처리할 수 있다. 스프링에 권장하나 문법이 어려움.
+  ### Thymleaf란
+  - '서버 템플릿 엔진'. html 태그에 속성을 추가해 페이지에 동적으로 값을 추가하거나 처리할 수 있다. 스프링에 권장하나 문법이 어려움.
   EX)
   <input type="text" value="test" th:value="${item}"/>
   ht:value를 통해 item 변수에 값이 존재하면 해당 값 세팅.
   item이 존재하지 않으면 value="test" 값이 세팅된다.
   th:xxx 가 붙은 부분은 서버 사이드 렌더링 
 
-  ## ※ 서버 템플릿 엔진 : 서버에서 DB 또는 API 등을 통해 가져온 데이터를 미리 정의된 템플릿에 넣어 HTML을 그려내 클라이언트에 전달해준다.
-  ##                   즉, HTML 코드에서 고정적으로 사용되는 부분은 템플릿으로 만들어두고 동적으로 생성되는 부분만 템플릿 특정 장소에 끼워넣는 방식.
+  ※ 서버 템플릿 엔진 : 서버에서 DB 또는 API 등을 통해 가져온 데이터를 미리 정의된 템플릿에 넣어 HTML을 그려내 클라이언트에 전달해준다.
+                     즉, HTML 코드에서 고정적으로 사용되는 부분은 템플릿으로 만들어두고 동적으로 생성되는 부분만 템플릿 특정 장소에 끼워넣는 방식.
 
-  네임스페이스 : <html lang="en" xmlns:th="http://www.thymeleaf.org">
+  네임스페이스 : "<html lang="en" xmlns:th="http://www.thymeleaf.org">"
   
-  # Thymleaf 문법
+  ### Thymleaf 문법
   - 표현식: <div th:[속성]=”서버에서 받는 값 및 조건식”/>
             변수 : ${...} - ${student.id}
             선택자 : *{...} - *{id}
@@ -31,7 +30,7 @@
             if-then-else : if ? then : else - ${student.age < 20} ? '청소년' : '성인'
             default : value ?: defaultValue
 
-   # - 기본기능
+   ### - 기본기능
    1. th:text="${}" : jsp의 el 표현식인 ${}와 마찬가지로 ${} 표현식을 통해서 컨트롤러에서 전달받은 데이터 접근 가능.
                    ex) <div th:text="${item}"></div>
                    ※ th:utext 속성도 있는데. html태크를 escape 처리하지 않기 때문에 보안에 취약해서 주의해서 사용.
