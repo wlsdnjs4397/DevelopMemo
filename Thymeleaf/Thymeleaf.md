@@ -54,13 +54,13 @@
                     -> /hello/data1?param2=data2    
    5. th:with="${}" : 새로운 변수값을 생성할 수 있다. JSTL에서 c:set과 유사하지만 선언한 요소의 하위태그에서만 사용할 수 있다.     
                   ```      
-      ex)      
-        <div th:with="userid=${number}"> <p th:text="${userid}"></p> <div>   
+                    ex)      
+                    <div th:with="userid=${number}"> <p th:text="${userid}"></p> <div>   
                   ```   
    7. th:value="${}" : input의 value에 값을 넣을 때 사용한다.
                        여러개의 값을 넣을 땐 + 기호를 사용한다.   
       ```   
-      ex) <input type="text" th:value="${userid}">   
+          ex) <input type="text" th:value="${userid}">   
       ```   
    9. th:block : block은 타임리프 표현을 어느 곳에서든 사용할 수 있도록 하는 구문이다. 동적인 처리가 필요할 때 사용. layout기능이나 switch에 많이 사용.
                    ex) <th:block th:with="userid=${number}"></th:block>
