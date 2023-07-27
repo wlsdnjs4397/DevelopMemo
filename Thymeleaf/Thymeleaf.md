@@ -52,9 +52,9 @@
                     - 경로 변수 + 쿼리 파라미터   
                     : @{/hello/{param1}(param1=${param1}, param2=${param2})}   
                     -> /hello/data1?param2=data2    
-   5. th:with="${}" : 새로운 변수값을 생성할 수 있다. JSTL에서 c:set과 유사하지만 선언한 요소의 하위태그에서만 사용할 수 있다.   
-                  ```   
-                   ex)   
+   5. th:with="${}" : 새로운 변수값을 생성할 수 있다. JSTL에서 c:set과 유사하지만 선언한 요소의 하위태그에서만 사용할 수 있다.     
+                  ```      
+                   ex)      
                   <div th:with="userid=${number}"> <p th:text="${userid}"></p> <div>   
                   ```   
    7. th:value="${}" : input의 value에 값을 넣을 때 사용한다.
