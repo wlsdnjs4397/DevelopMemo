@@ -34,10 +34,11 @@
    ### - 기본기능
    1. th:text="${}" : jsp의 el 표현식인 ${}와 마찬가지로 ${} 표현식을 통해서 컨트롤러에서 전달받은 데이터 접근 가능.   
                      ```     
-                          ex) <div th:text="${item}"></div>      
-                    ```      
+                       ex) <div th:text="${item}"></div>      
+                     ```      
                    ※ th:utext 속성도 있는데. html태크를 escape 처리하지 않기 때문에 보안에 취약해서 주의해서 사용.
-   3. th:href="@{}" : <a> 태그의 href속성과 동일하다.
+   3. th:href="@{}" : a 태그의 href속성과 동일하다.
+                  ```     
                    ex) <a th:href="@{/testPage?currPage={page}}">
                     model에 {"param1", "data1"} {"param2", "data2"} 넣은 경우
                     -쿼리 파라미터
@@ -51,17 +52,18 @@
                     - 경로 변수 + 쿼리 파라미터
                     : @{/hello/{param1}(param1=${param1}, param2=${param2})}
                     -> /hello/data1?param2=data2
-   4. th:with="${}" : 새로운 변수값을 생성할 수 있다. JSTL에서 c:set과 유사하지만 선언한 요소의 하위태그에서만 사용할 수 있다.
+                  ```     
+   5. th:with="${}" : 새로운 변수값을 생성할 수 있다. JSTL에서 c:set과 유사하지만 선언한 요소의 하위태그에서만 사용할 수 있다.
                    ex) <div th:with="userid=${number}"> <p th:text="${userid}"></p> <div>
-   5. th:value="${}" : input의 value에 값을 넣을 때 사용한다.
+   6. th:value="${}" : input의 value에 값을 넣을 때 사용한다.
                        여러개의 값을 넣을 땐 + 기호를 사용한다.
                    ex) <input type="text" th:value="${userid}">
-   6. th:block : block은 타임리프 표현을 어느 곳에서든 사용할 수 있도록 하는 구문이다. 동적인 처리가 필요할 때 사용. layout기능이나 switch에 많이 사용.
+   7. th:block : block은 타임리프 표현을 어느 곳에서든 사용할 수 있도록 하는 구문이다. 동적인 처리가 필요할 때 사용. layout기능이나 switch에 많이 사용.
                    ex) <th:block th:with="userid=${number}"></th:block>
-   7. th:if, th:unless : 조건문 if, else
+   8. th:if, th:unless : 조건문 if, else
                    ex) <p th:if="${student.grade > 80}">합격</p>
                        <p th:unless="${student.grade > 80}">불합격</p>
-   8. th:each, 상태변수 : th:each를 사용할때 기본적으로 status 변수를 제공해주고 이를 이용하여 index나 count등의 값을 사용할 수 있다.
+   9. th:each, 상태변수 : th:each를 사용할때 기본적으로 status 변수를 제공해주고 이를 이용하여 index나 count등의 값을 사용할 수 있다.
                          기본적으로 변수명Stat로 사용할 수 있다. 
                          index : 현재 인덱스(0부터 시작)
                          count : 현재 인덱스(1부터 시작)
