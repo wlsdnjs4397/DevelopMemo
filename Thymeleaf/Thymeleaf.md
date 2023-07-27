@@ -66,10 +66,12 @@
    ```   
                    ex) <th:block th:with="userid=${number}"></th:block>
   ```   
-   11. th:if, th:unless : 조건문 if, else
-                   ex) <p th:if="${student.grade > 80}">합격</p>
+   11. th:if, th:unless : 조건문 if, else   
+  ```   
+                   ex) <p th:if="${student.grade > 80}">합격</p>   
                        <p th:unless="${student.grade > 80}">불합격</p>
-   12. th:each, 상태변수 : th:each를 사용할때 기본적으로 status 변수를 제공해주고 이를 이용하여 index나 count등의 값을 사용할 수 있다.
+  ```
+   13. th:each, 상태변수 : th:each를 사용할때 기본적으로 status 변수를 제공해주고 이를 이용하여 index나 count등의 값을 사용할 수 있다.
                          기본적으로 변수명Stat로 사용할 수 있다. 
                          index : 현재 인덱스(0부터 시작)
                          count : 현재 인덱스(1부터 시작)
