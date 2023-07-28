@@ -4,15 +4,24 @@
 - 클래스명을 지정할때는 className="클래스명" 으로 사용한다.   
 
 ### 2.  데이터 바인딩
-- 중괄호 {}에 변수명을 넣어서 데이터를 쉽게 넣을 수 있다.
+- 중괄호 {}에 변수,함수,이미지 등을 넣어서 데이터를 쉽게 넣을 수 있다.
   ```
-  let posts = 'hello react'   
+  import logo from './logo.svg';
+  ...
+  ...
+  let posts = 'hello react'
+  function test(){
+    return 'bye react';
+  }
+  
   return(    
     <div className="App">   
-      <p>{posts}</p>   
+      <p>{posts}</p>
+      <p>{test()}</p>
+      <img src={logo}/>
     </div>   
   );
-  ```   
+  ```
   
   
   
