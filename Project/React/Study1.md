@@ -44,5 +44,5 @@
 - state는 웹/앱 사이트에서 데이터가 바뀌면 새로고침 없이도 HTML이 자동으로 재렌더링된다. => 변경이 잦은 데이터는 state를 사용.
 
 
-  
+참조  : https://velog.io/@kiyoog02/React-%EA%B8%B0%EC%B4%88-2-JSX%EC%99%80-state-%EC%82%AC%EC%9A%A9  
   
