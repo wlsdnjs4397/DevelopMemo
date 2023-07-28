@@ -22,6 +22,27 @@
     </div>   
   );
   ```
-  
+### 3. style 속성
+- 오브젝트 형식으로 넣어줘야 하고, 중괄호를 활용한다.   
+  ```   
+  <div style={{color:"red", fontSize:"25px"}}>Hello React</div>
+  ```
+
+### 4. state
+- 데이터는 변수에 넣거나 state에 넣어서 사용 가능하다.   
+- state를 사용하기 위해서 import {useState} from 'react'; 임포트 추가.   
+- let [a,b] = useState('씨부렁씨부렁') 의 형태로 사용한다. a는 데이터, b는 데이터를 변경하는 함수가 된다.
+- 문자, 숫자, array, object와 같은 형식들 모두 저장 가능하다.   
+ ```
+ let [title, setTitle] = useState(["제목1", "제목2"]);   
+ return(    
+    <div>
+      <p>{title[0]}</p>   
+    </div>   
+ );
+ ```
+- state는 웹/앱 사이트에서 데이터가 바뀌면 새로고침 없이도 HTML이 자동으로 재렌더링된다. => 변경이 잦은 데이터는 state를 사용.
+
+
   
   
