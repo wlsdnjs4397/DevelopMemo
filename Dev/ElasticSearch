@@ -1,0 +1,25 @@
+ES와 RDBMS 대응
+
+  선 : ES , 후 : RDBMS
+  
+  Index <=> Database
+  Shard <=> Partition
+  Type  <=> Table
+  Document <=> Row
+  Field <=> Column
+  Mapping <=> Schema
+  Query DSL <=> SQL
+  
+  Elastic Search는 기본적으로 http 프로토콜로 접근이 가능한 REST API를 통해 데이터 조작을 지원한다.
+  GET <=> SELECT
+  PUT <=> INSERT
+  POST <=> UPDATE, SELECT
+  DELETE <=> DELETE
+  HEAD(인덱스 정보 확인)
+
+역색인
+- 일반적인 색인 : 문서의 위치에 대한 index를 만들어서 빠르게 그 문서에 접근하고자 하는 것 (책의 목차)
+- 역색인 : 문서 내의 문자와 같은 내용물의 맵핑 정보를 색인해놓는 것  (책 가장 뒤 단어 별 색인 페이지)
+
+
+
