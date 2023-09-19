@@ -1,0 +1,25 @@
+response.setHeader("Pragma", "no-cache;");
+response.setContentType("application/octet-stream");
+response.setHeader("Content-Disposition", "attachment;filename=" + new String(fileName+".zip" + ";"));
+response.setStatus(HttpServletResponse.SC_OK);
+
+try (ZipOutputStream zos = new ZipOutputStream(response.getOutputStream())) {
+  for (Recipe recipe : pdfFileList) {
+      url = new URL(recipe.getRecipeFilePdf());
+      in = url.openStream();
+
+      ZipEntry zipEntry = new ZipEntry(recipe.getTitle()+".pdf");
+      zos.putNextEntry(zipEntry);
+      byte[] buffer = new byte[1024];
+      int len;
+      while ((len = in.read(buffer)) > 0) {
+          zos.write(buffer, 0, len);
+      }
+      zos.closeEntry();
+  }
+} catch (Exception e) {
+    e.printStackTrace();
+}finally {
+    if(in != null) in.close();
+    if(out != null) out.close();
+}
